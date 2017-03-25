@@ -1,0 +1,3 @@
+[submodule "googlefinance"]
+	path = googlefinance
+	url = https://github.com/xiaonanln/googlefinance/googlefinance
