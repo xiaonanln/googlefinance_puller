@@ -2,6 +2,7 @@ import sys
 import os
 sys.path[0:0] = [ os.path.join(os.path.dirname(sys.argv[0]), 'googlefinance')]
 import time
+import json
 import googlefinance as gf
 
 INTERVAL = 5
@@ -27,7 +28,8 @@ def mainloop():
 				diffQuotes['_ms'] = missingKeys
 
 			if diffQuotes:
-				print diffQuotes
+				print symbol, json.dumps(diffQuotes)
+				sys.stdout.flush()
 			else:
 				print >>sys.stderr, '%s: quotes not changed' % symbol
 
