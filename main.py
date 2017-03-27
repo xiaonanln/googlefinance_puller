@@ -28,7 +28,7 @@ def mainloop():
 				diffQuotes['_ms'] = missingKeys
 
 			if diffQuotes:
-				print symbol, json.dumps(diffQuotes)
+				print symbol, json.dumps(diffQuotes, separators=',:', sort_keys=True)
 				sys.stdout.flush()
 			else:
 				print >>sys.stderr, '%s: quotes not changed' % symbol
