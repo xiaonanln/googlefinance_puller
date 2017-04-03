@@ -6,7 +6,7 @@ import json
 import googlefinance as gf
 
 INTERVAL = 5
-SYMBOLS = ['QQQ', 'SPY']
+SYMBOLS = ['SPY']
 
 lastQuotesCache = {
 	s: {} for s in SYMBOLS
@@ -28,10 +28,10 @@ def mainloop():
 				diffQuotes['_ms'] = missingKeys
 
 			if diffQuotes:
-				print symbol, json.dumps(diffQuotes, separators=',:', sort_keys=True)
+				print symbol, int(time.time()), json.dumps(diffQuotes, separators=',:', sort_keys=True)
 				sys.stdout.flush()
 			else:
-				print >>sys.stderr, '%s: quotes not changed' % symbol
+				print >>sys.stderr, '%s: %s: quotes not changed' % (time.ctime(), symbol)
 
 			lastQuotesCache[symbol] = quotes
 
